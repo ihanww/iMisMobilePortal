@@ -1,0 +1,73 @@
+﻿@using iMis.Core.MVC.Resources
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/jquery")
+    @Scripts.Render("~/imisjs")
+    @Styles.Render("~/imiscss")
+    @RenderSection("css", false)
+</head>
+<body>
+    <div id="page-content-body" class="container-fluid">
+        @RenderBody()
+    </div>
+    
+    <!-- 消息提示框 [点击空白不消失 data-backdrop="static"] -->
+    <div id="imisAlert" class="modal fade" role="dialog" data-redirect="no">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title title">@iMisMvcResource.Message</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default simple hide" data-dismiss="modal">@iMisMvcResource.OK</button>
+                    <button type="button" class="btn btn-default redirect optOK hide" data-dismiss="modal">确定，并返回浏览页</button>
+                    <button type="button" class="btn btn-default redirect optCancel hide" data-dismiss="modal">留在本页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息确认提示框 -->
+    <div id="imisConfirm" class="modal fade" role="dialog" data-backdrop="static" data-confirmed="no">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title title">@iMisMvcResource.Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default optOK" data-dismiss="modal">确定</button>
+                    <button type="button" class="btn btn-default optCancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="jsMasterLayout" type="text/javascript">
+        $(function() {
+            //返回按键执行代码
+            $("#btniMisReturn").click(function() {
+                history.back();
+            });
+            
+        });
+
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

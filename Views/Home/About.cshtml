@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<h1>测试页面</h1>
+<div>
+
+    <button id="btnTest" style="display:none;">关闭本页面</button>
+
+    <br /><br />
+    <button id="btnCamera">拍照</button>
+    <button id="btnClear">清理</button>
+
+    <br /><br />
+    <button id="btnScan">扫描</button>
+    <input id="txtCode" />
+</div>
+
+<div>
+    <img id="myImage" style="max-height:400px;max-width:400px" />
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="http://localasset/cordova.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+
+        //初始化加载
+        document.addEventListener("deviceready",function() {
+            //用以取消等待画面
+            navigator.splashscreen.hide();
+            if(navigator && navigator.app) {
+                $("#btnTest").show();
+            } else {
+                alert("cordova loaded error!!");
+            }
+        },false);
+
+        //关联后退按钮事件
+        document.addEventListener("backbutton",function(e) {
+            //后退弹出退出提示
+            if(location.hash == '#home') {
+                navigator.notification.confirm("是否退出程序?",function(buttonIndex) {
+                    if(buttonIndex == 1) navigator.app.exitApp();
+                },'提示',['退出','取消']);
+            } 
+        },false);
+
+
+        $(function() {
+
+            $("#btnTest").click(function() {
+                //navigator.splashscreen.show();
+                navigator.app.exitApp();
+            });
+        
+            //扫描接口
+            $("#btnScan").click(function() {
+
+                if(typeof (cordova) == "undefined") {
+                    alert("no load cordova!");
+                    return;
+                }
+
+                var options = {
+                    preferFrontCamera: false,
+                    showFlipCameraButton: false,
+                    showTorchButton: true,
+                    torchOn: false,
+                    saveHistory: false,
+                    prompt: "请对准扫描区域",
+                    resultDisplayDuration: 100,
+                    formats: "all",   // EAN_13 QR_CODE
+                    orientation: "portrait",
+                    disableAnimations: true,
+                    disableSuccessBeep: false
+                };
+
+                cordova.plugins.barcodeScanner.scan(function(result) {
+                    $("#txtCode").val(result.text);
+                },function(error) {
+                    alert("Scanning failed: " + error);
+                },options);
+            });
+
+            //拍照接口(仅作测试使用)
+            $("#btnCamera").click(function() {
+                if(!navigator.camera) {
+                    alert("no load cordova!");
+                    return;
+                }
+
+                //Camera Options
+                var options = {
+                    quality: 100,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.CAMERA,
+                    encodingType: Camera.EncodingType.JPEG,
+                    mediaType: Camera.MediaType.PICTURE,
+                    allowEdit: false,
+                    correctOrientation: true,
+                    targetHeight: 200,
+                    targetHeight: 200
+                };
+
+                navigator.camera.getPicture(function(imageData) {
+                    //Camera Success
+                    var image = document.getElementById('myImage');
+                    image.src = "data:image/jpeg;base64," + imageData;
+                },function(message) {
+                    //Camera Error
+                    alert('Failed because: ' + message);
+                },options);
+            });
+
+            $("#btnClear").click(function() {
+
+                var image = document.getElementById('myImage');
+                image.src = "";
+            });
+
+        });
+
+
+    </script>
+}

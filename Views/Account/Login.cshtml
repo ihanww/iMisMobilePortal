@@ -1,0 +1,248 @@
+﻿@model iMisMobilePortal.Controllers.LoginUserInfo
+
+@{
+    ViewBag.Title = "APP ";
+}
+
+
+@section css{
+    <style>
+        body {
+            background: #d2d6de;
+        }
+
+        #pagemt {
+            margin-top: 10%;
+        }
+
+        #pagehead {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #pagefoot {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-top: 15px;
+        }
+
+        .form-control {
+            padding: 6px 12px !important;
+        }
+
+        @@media (max-width: 767px) {
+            #pagehead {
+                width: 90%;
+                margin-top: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 15px;
+            }
+
+            #pagefoot {
+                width: 90%;
+                margin: 15px auto;
+            }
+        }
+
+        @@media (min-width: 768px) {
+
+            #pagefull {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background-color: rgba(255, 255, 255, 0.2);
+                margin: 0 auto;
+                width: auto;
+                margin-right: 320px;
+                height: 371px;
+                padding: 15px;
+            }
+
+            #loginbox {
+                float: right;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            .modal-dialog {
+                margin: 50px;
+            }
+        }
+
+        .imagefull {
+            height: 321px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 5px;
+        }
+
+        #welcomemsg .title {
+            color: #fff;
+            text-shadow: 1px 1px 1px #808080;
+            font-size: 63px;
+            text-indent: 30px;
+            font-family: 'Times New Roman', Times, serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .tab-pane {
+            border-left: solid 1px #ddd;
+            border-right: solid 1px #ddd;
+            border-bottom: solid 1px #ddd;
+        }
+
+
+        .footer {
+            margin: 15px;
+            padding: 15px;
+            background: #fff;
+            color: #666;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #loginbox {
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+}
+
+
+<div class="container">
+    <div id="pagemt" class="hidden-xs">&nbsp;</div>
+
+    <div id="pagehead" class="panel panel-default visible-xs hdn-part">
+        <div style="padding: 10px;background-color: #fff;border-radius: 5px;">
+            <img id="imgSmall" src="~/images/pic3.png" style="width: 100%; border: solid 1px #cccccc;" alt="...">
+        </div>
+    </div>
+
+    <div id="welcomemsg" class="hidden-xs hdn-part">
+        <h1 class="title">
+            <span style="font-weight: 700;">Welcome To APP @ViewBag.UiTitle.</span>
+        </h1>
+    </div>
+
+    <div id="loginbox" class="panel panel-default login-box ">
+        <div class="login-box-body">
+            <p class="login-box-msg">
+                <img src="~/images/app.png" />
+            </p>
+            <div id="j-login" class="rightf-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active" style="margin-bottom: 1px;">
+                        <a href="#login_tab_1" data-toggle="tab" style="top: 2px;padding: 5px 15px;">登录|Login</a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="border-right: 0; border-left: 0; min-height: 100px;">
+                    <div class="tab-pane active" id="login_tab_1" style="padding: 11px;">
+                        <form id="frmLogin">
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", @placeholder = "用户名" })
+                            </div>
+                            <div class="form-group has-feedback">
+                                @Html.PasswordFor(u => u.Password, new { @class = "form-control", @placeholder = "密码" })
+                            </div>
+                            <div class="form-group has-feedback">
+                                @Html.Hidden("hdnCompanyAuthUrl", (string)ViewBag.CompanyAuthUrlList)
+                                @Html.DropDownListFor(u => u.CompanyCode, (List<SelectListItem>)ViewBag.CompanyAuthUrl, new { @class = "form-control" })
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button id="btnLogon" type="button" class="btn btn-primary btn-block btn-flat" style="border-radius: 2px; height: 40px">
+                                        <b>登 录</b>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="login_tab_2" style="padding: 8px; ">
+                        <p id="wxscan" class="login-box-msg">请使用微信扫一扫</p>
+                        <div id="scanCode" style="padding: 1px; text-align: center; cursor: pointer;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.login-box -->
+
+    <div id="pagefull" class="panel panel-default hidden-xs hdn-part">
+        <div style="padding: 10px;background-color: #fff;border-radius: 5px;">
+            <div id="imgFull" class="imagefull" style="background-image: url(@Url.Content("~/images/pic3.png"))">
+            </div>
+        </div>
+    </div>
+
+    <div id="pagefoot" class="panel panel-default hdn-part">
+        <div class="footer">
+            <div>
+                <span>金光纸业（中国）投资有限公司</span>
+                <span>版权所有</span>
+                <span class="fa fa-copyright"></span>
+                <span>2015 ~ </span>
+            </div>
+            <div id="output"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/bootstrap-waitingfor/bootstrap-waitingfor.min.js"></script>
+    <script>
+        $(function() {
+
+            //回车切换文本框
+            var $inp = $('.form-control');
+            $inp.eq(0).focus();
+            $inp.on('keydown',function(e) {
+                if(e.which === 13) {
+                    e.preventDefault();
+                    var $that = $(this);
+                    if($that.is("#CheckCode")) {
+                        if($.trim($that.val()).length > 0) {
+                            $("#btnLogon").click();
+                        }
+                    } else {
+                        $inp.eq($inp.index(this) + 1).focus();
+                    }
+                }
+            });
+
+            $("#btnLogon").click(function() {
+
+                var url,userInfo = $("#frmLogin").serializeJSON();
+                var companyAuthUrl = JSON.parse($("#hdnCompanyAuthUrl").val());
+                if(companyAuthUrl[userInfo.CompanyCode] && companyAuthUrl[userInfo.CompanyCode].LoginUrl) {
+                    url = companyAuthUrl[userInfo.CompanyCode].LoginUrl;
+                }
+
+                if(!url) {
+                    alert("无法获取相应的用户验证接口.");
+                    return false;
+                }
+
+                var flag = false;
+                setTimeout(function() {
+                    if(!flag) {
+                        flag = true;
+                        waitingDialog.show('请稍候 ..',{ dialogSize: 'sm' });
+                    }
+                },1500);
+
+                $.iMis.ajax.post({
+                    url: url,
+                    userInfo: userInfo
+                }).done(function() {
+                    if(flag) waitingDialog.hide();
+                    flag = true;
+                });
+
+                return false;
+            });
+
+        });
+
+    </script>
+}

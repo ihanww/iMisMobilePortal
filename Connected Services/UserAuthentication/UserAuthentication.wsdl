@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://auth.app.com.cn/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://auth.app.com.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://auth.app.com.cn/">
+      <s:element name="GetCompanyAuthUrlList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCompanyAuthUrlListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyAuthUrlListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SAPUserAuthentication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SAPUserAuthenticationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SAPUserAuthenticationResult" type="tns:AuthenticationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthenticationResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Succeed" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SAPUserAuthenticationJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SAPUserAuthenticationJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SAPUserAuthenticationJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OAUserAuthentication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OAUserAuthenticationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAUserAuthenticationResult" type="tns:AuthenticationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OAUserAuthenticationJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OAUserAuthenticationJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAUserAuthenticationJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADUserAuthentication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADUserAuthenticationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ADUserAuthenticationResult" type="tns:AuthenticationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADUserAuthenticationJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADUserAuthenticationJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ADUserAuthenticationJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompanyAuthUrlListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyAuthUrlList" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyAuthUrlListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyAuthUrlListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SAPUserAuthenticationSoapIn">
+    <wsdl:part name="parameters" element="tns:SAPUserAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="SAPUserAuthenticationSoapOut">
+    <wsdl:part name="parameters" element="tns:SAPUserAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SAPUserAuthenticationJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:SAPUserAuthenticationJson" />
+  </wsdl:message>
+  <wsdl:message name="SAPUserAuthenticationJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:SAPUserAuthenticationJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="OAUserAuthenticationSoapIn">
+    <wsdl:part name="parameters" element="tns:OAUserAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="OAUserAuthenticationSoapOut">
+    <wsdl:part name="parameters" element="tns:OAUserAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="OAUserAuthenticationJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:OAUserAuthenticationJson" />
+  </wsdl:message>
+  <wsdl:message name="OAUserAuthenticationJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:OAUserAuthenticationJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ADUserAuthenticationSoapIn">
+    <wsdl:part name="parameters" element="tns:ADUserAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="ADUserAuthenticationSoapOut">
+    <wsdl:part name="parameters" element="tns:ADUserAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ADUserAuthenticationJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:ADUserAuthenticationJson" />
+  </wsdl:message>
+  <wsdl:message name="ADUserAuthenticationJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:ADUserAuthenticationJsonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserAuthenticationSoap">
+    <wsdl:operation name="GetCompanyAuthUrlList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取工厂用户认证入口列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCompanyAuthUrlListSoapIn" />
+      <wsdl:output message="tns:GetCompanyAuthUrlListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthentication">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能：SAP 用户验证&lt;br&gt;输入：accessToken(访问码),userName(工号),password(密码)&lt;br&gt;返回：AuthenticationResult 对象，State 属性指明验证是否成功，Message 属性包含相应的信息, 当验证成功时 Result 属性返回用户名对应的工号</wsdl:documentation>
+      <wsdl:input message="tns:SAPUserAuthenticationSoapIn" />
+      <wsdl:output message="tns:SAPUserAuthenticationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthenticationJson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能与 SAPUserAuthentication 功能一致，但以 JSON 字符串的形式返回 AuthenticationResult 对象</wsdl:documentation>
+      <wsdl:input message="tns:SAPUserAuthenticationJsonSoapIn" />
+      <wsdl:output message="tns:SAPUserAuthenticationJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthentication">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能：OA 用户验证&lt;br&gt;输入：accessToken(访问码),userName(工号),password(密码)&lt;br&gt;返回：AuthenticationResult 对象，State 属性指明验证是否成功，Message 属性包含相应的信息, 当验证成功时 Result 属性返回用户名对应的工号</wsdl:documentation>
+      <wsdl:input message="tns:OAUserAuthenticationSoapIn" />
+      <wsdl:output message="tns:OAUserAuthenticationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthenticationJson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能与 OAUserAuthentication 功能一致，但以 JSON 字符串的形式返回 AuthenticationResult 对象</wsdl:documentation>
+      <wsdl:input message="tns:OAUserAuthenticationJsonSoapIn" />
+      <wsdl:output message="tns:OAUserAuthenticationJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthentication">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能：AD 用户验证&lt;br&gt;输入：accessToken(访问码),userName(域帐号),password(密码)&lt;br&gt;返回：AuthenticationResult 对象，State 属性指明验证是否成功，Message 属性包含相应的信息, 当验证成功时 Result 属性返回用户名对应的工号</wsdl:documentation>
+      <wsdl:input message="tns:ADUserAuthenticationSoapIn" />
+      <wsdl:output message="tns:ADUserAuthenticationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthenticationJson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">功能与 ADUserAuthentication 功能一致，但以 JSON 字符串的形式返回 AuthenticationResult 对象</wsdl:documentation>
+      <wsdl:input message="tns:ADUserAuthenticationJsonSoapIn" />
+      <wsdl:output message="tns:ADUserAuthenticationJsonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserAuthenticationSoap" type="tns:UserAuthenticationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyAuthUrlList">
+      <soap:operation soapAction="http://auth.app.com.cn/GetCompanyAuthUrlList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthentication">
+      <soap:operation soapAction="http://auth.app.com.cn/SAPUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthenticationJson">
+      <soap:operation soapAction="http://auth.app.com.cn/SAPUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthentication">
+      <soap:operation soapAction="http://auth.app.com.cn/OAUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthenticationJson">
+      <soap:operation soapAction="http://auth.app.com.cn/OAUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthentication">
+      <soap:operation soapAction="http://auth.app.com.cn/ADUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthenticationJson">
+      <soap:operation soapAction="http://auth.app.com.cn/ADUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserAuthenticationSoap12" type="tns:UserAuthenticationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyAuthUrlList">
+      <soap12:operation soapAction="http://auth.app.com.cn/GetCompanyAuthUrlList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthentication">
+      <soap12:operation soapAction="http://auth.app.com.cn/SAPUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAPUserAuthenticationJson">
+      <soap12:operation soapAction="http://auth.app.com.cn/SAPUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthentication">
+      <soap12:operation soapAction="http://auth.app.com.cn/OAUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OAUserAuthenticationJson">
+      <soap12:operation soapAction="http://auth.app.com.cn/OAUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthentication">
+      <soap12:operation soapAction="http://auth.app.com.cn/ADUserAuthentication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADUserAuthenticationJson">
+      <soap12:operation soapAction="http://auth.app.com.cn/ADUserAuthenticationJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserAuthentication">
+    <wsdl:port name="UserAuthenticationSoap" binding="tns:UserAuthenticationSoap">
+      <soap:address location="http://172.18.209.225/WebService/APPAuthWebService/UserAuthentication.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserAuthenticationSoap12" binding="tns:UserAuthenticationSoap12">
+      <soap12:address location="http://172.18.209.225/WebService/APPAuthWebService/UserAuthentication.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
